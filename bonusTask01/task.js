@@ -10,7 +10,6 @@
 Необходимо учесть ситуации, когда пользователь ввел строку или вообще не ввел ничего.
 * */
 
-
 let a = 0;
 let b = 0;
 let num;
@@ -18,19 +17,19 @@ let num;
 let compareNumber = () => {
 
     for (let i = 0; i < 2; i++) {
-        num = prompt("Entra number:", "0");
-       do {
-        if (i === 0) { a += +num; }
-        if (i === 1) { b += +num; }
-           if (isFinite(num)) { break }
-           //if (typeof num == 'number') { break }
-           // break;
-        } while (num === null || num === ' ');
+        do {
+            num = prompt("Entra number:", "0");
+
+              if (i === 0) { a = +num; }
+              if (i === 1) { b = +num; }
+
+          if (typeof num === 'number') { break }
+
+      } while ( num == null || !isFinite(num) || num === ' ' );
 
     }
 
-
-    if ( a > b && a !== b ) {
+    if ( a > b ) {
         console.log("Первое число больше второго");
     } else if (a === b) {
         console.log("Числа равны");
