@@ -41,7 +41,7 @@ let appData = {
                     answer1 = prompt("Во сколько это обойдется?", "100");
 
                 } while ( isNaN(answer1) || answer1 === "" || answer1 === null );
-                appData.expenses.question1 = +answer1;
+                appData.expenses[question1] = +answer1;
 
             }
             if (i === 1)  {
@@ -50,7 +50,7 @@ let appData = {
                     answer2 = prompt("Во сколько это обойдется?", "200");
 
                 } while ( isNaN(answer2) || answer2 === "" || answer2 === null  );
-                appData.expenses.question2 = +answer2;
+                appData.expenses[question2] = +answer2;
 
             }
 
