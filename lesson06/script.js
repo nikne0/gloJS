@@ -44,7 +44,7 @@ let appData = {
                 appData.expenses.question1 = +answer1;
 
             }
-            if (i === 0)  {
+            if (i === 1)  {
                 do {
                     question2 = prompt("Какие обязательные ежемесячные расходы у вас есть?", "Casa");
                     answer2 = prompt("Во сколько это обойдется?", "200");
