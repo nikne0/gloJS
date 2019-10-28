@@ -30,31 +30,21 @@ let appData = {
         appData.addExpenses = addExpenses.toLowerCase().split(',');
         appData.deposit = confirm("Есть ли у вас депозит в банке?");
 
-        let question1;
-        let question2;
-        let answer1;
-        let answer2;
+
+        let question;
+        let answer;
+
         for (let i = 0; i < 2; i++) {
-            if (i === 0) {
-                do {
-                    question1 = prompt("Какие обязательные ежемесячные расходы у вас есть?", "Taxi");
-                    answer1 = prompt("Во сколько это обойдется?", "100");
+            do {
+                question = prompt("Какие обязательные ежемесячные расходы у вас есть?", "Taxi");
+                answer = prompt("Во сколько это обойдется?", "100");
 
-                } while ( isNaN(answer1) || answer1 === "" || answer1 === null );
-                appData.expenses.question1 = +answer1;
-
-            }
-            if (i === 0)  {
-                do {
-                    question2 = prompt("Какие обязательные ежемесячные расходы у вас есть?", "Casa");
-                    answer2 = prompt("Во сколько это обойдется?", "200");
-
-                } while ( isNaN(answer2) || answer2 === "" || answer2 === null  );
-                appData.expenses.question2 = +answer2;
-
-            }
+            } while ( isNaN(answer) || answer === "" || answer === null );
+            appData.expenses[question] = +answer;
 
         }
+
+        
 
     },
     budget: money,
