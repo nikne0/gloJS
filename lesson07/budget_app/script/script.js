@@ -16,6 +16,8 @@
 
 let idElem = document.getElementById('start'),
     buttons = document.getElementsByTagName('button'),
+    incomePlus = buttons[0],
+    expensesPlus = buttons[1],
     checkbox = document.querySelector('#deposit-check'),
     inputItem = document.querySelectorAll('.additional_income-item'),
     inputBudgetMonth = document.getElementsByClassName('result-total budget_month-value'),
@@ -26,8 +28,16 @@ let idElem = document.getElementById('start'),
     inputPeriodIncome = document.getElementsByClassName('result-total income_period-value'),
     inputTarget = document.getElementsByClassName('result-total target_month-value');
 
-let inputAmount = document.querySelector('.target-amount'),
-    inputSelPeriod = document.querySelector('input[type="range"]');
+let targetAmount = document.querySelector('.target-amount'),
+    periodSelect = document.querySelector('input[type="range"]'),
+    salaryAmount = document.querySelector('.salary-amount'),
+    incomeTitle = document.querySelector('.income-title'),
+    incomeAmount = document.querySelector('.income-amount'),
+    expensesTitle = document.querySelector('.expenses-title'),
+    expensesAmount = document.querySelector('.expenses-amount'),
+    additionalExpenses = document.querySelector('.additional_expenses-item'),
+    depositAmount = document.querySelector('.deposit-amount'),
+    depositPercent = document.querySelector('.deposit-percent');
 
 
 
