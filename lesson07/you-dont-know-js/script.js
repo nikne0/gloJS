@@ -18,8 +18,9 @@ let asideBooks = document.querySelector('.books'); // получаем масс�
 let divBook = document.querySelectorAll('.book'); // получаем массив с заголовками книг
 
 console.log(divBook);
-asideBooks.before(divBook[1], divBook[0]);
-asideBooks.append(divBook[2]);
+//asideBooks.before(divBook[1], divBook[0]);  неизвестный но рабочий метод
+asideBooks.insertBefore(divBook[1], divBook[0]);
+//sideBooks.append(divBook[2]);   неизвестный но рабочий метод
 asideBooks.before(divBook[4], divBook[3]);
 
 //Удалить рекламу со страницы
