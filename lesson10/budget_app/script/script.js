@@ -269,8 +269,11 @@ AppData.prototype.getPeriod = function () {
 
 AppData.prototype.eventListeners = function () {
     const _this = this;
+// привязка контекст вызова функции start к appData через bind
+    start.addEventListener('click', _this.start.bind(_this));
     incomePlus.addEventListener('click', _this.addIncomeBlock);
     expensesPlus.addEventListener('click', _this.addExpensesBlock);
+
     periodSelect.addEventListener('change', _this.getPeriod);
 
 // Сброс и очистка форм при клике
@@ -280,5 +283,4 @@ AppData.prototype.eventListeners = function () {
 
 const appData = new AppData();
 
-// привязка контекст вызова функции start к appData через bind
-start.addEventListener('click', appData.start.bind(appData));
+appData.eventListeners();
