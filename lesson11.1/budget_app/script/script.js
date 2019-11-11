@@ -4,7 +4,7 @@
 "use strict";
 
 // Получаем переменные с HTML
-let start = document.getElementById('start'),
+const start = document.getElementById('start'),
     cancel = document.getElementById('cancel'),
     buttons = document.getElementsByTagName('button'),
     incomePlus = buttons[0],
@@ -18,10 +18,10 @@ let start = document.getElementById('start'),
     additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0],
     additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0],
     incomePeriodValue = document.getElementsByClassName('income_period-value')[0],
+    targetAmount = document.querySelector('.target-amount'),
     targetMonthValue = document.getElementsByClassName('target_month-value')[0];
 
-let targetAmount = document.querySelector('.target-amount'),
-    periodSelect = document.querySelector('.period-select'),
+let periodSelect = document.querySelector('.period-select'),
     salaryAmount = document.querySelector('.salary-amount'),
     expensesTitle = document.querySelector('.expenses-title'),
     expensesAmount = document.querySelector('.expenses-amount'),
@@ -234,25 +234,25 @@ AppData.prototype.eventListeners = function() {
 // привязка контекст вызова функции start к appData через bind
     start.addEventListener('click', _this.start.bind(_this));
 
-    // Выхов события на добавление + передача аргументов Блока доходов
-    incomePlus.addEventListener('click', function () {
+    // Вызов события на добавление + передача аргументов Блока доходов
+    incomePlus.addEventListener('click', () => {
         _this.addBlock(incomeItems,incomePlus, '.income-items');
 
     });
 
     // Вызов события + передача аргументов на добавления блока расходов
-    expensesPlus.addEventListener('click', function () {
+    expensesPlus.addEventListener('click', () => {
         _this.addBlock(expensesItems, expensesPlus, '.expenses-items');
     });
 
     periodSelect.addEventListener('change', _this.getPeriod);
 
-    depositCheck.addEventListener('change', function () {
+    depositCheck.addEventListener('change', () => {
         if ( depositCheck.checked) {
             depositBank.style.display = 'inline-block';
             depositAmount.style.display = 'inline-block';
             _this.deposit = 'true';
-            depositBank.addEventListener('change', function () {
+            depositBank.addEventListener('change', () => {
                 let selectIndex = this.options[this.selectedIndex].value;
                 if ( selectIndex === 'other' ) {
                     depositPercent.disabled = false;
