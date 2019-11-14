@@ -103,10 +103,11 @@ window.addEventListener('DOMContentLoaded', function () {
         let animation;
 
         const popupGo = () => {
+            let clientWidth = document.documentElement.clientWidth;
             animation = requestAnimationFrame(popupGo);
-                start++;
-                popupContent.style.left = start + 'em';
-                if ( start > 70 ) {
+                start += 5;
+                popupContent.style.left = start + 'px';
+                if ( start > ( clientWidth / 2 ) ) {
                     start = 0;
                     cancelAnimationFrame(animation);
                 }
@@ -114,6 +115,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         popupBtn.forEach((elem) => {
                 elem.addEventListener('click', () => {
+                    let clientWidth = document.documentElement.clientWidth;
                     if ( clientWidth > 768 ) {
                         popup.style.display = 'block';
                         popupGo();
