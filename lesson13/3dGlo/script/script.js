@@ -97,33 +97,35 @@ window.addEventListener('DOMContentLoaded', function () {
             popupBtn = document.querySelectorAll('.popup-btn'),
             popupClose= document.querySelector('.popup-close');
 
-        let clientWidth = document.documentElement.clientWidth;
-
-
         // Animations for PopUp
+        let clientWidth = document.documentElement.clientWidth;
+        let start= 1;
+        let animation;
+
         const popupGo = () => {
-            let start = Date.now();
-            let timer = setInterval(function () {
-                let timePassed = Date.now() - start;
-                popupContent.style.left = timePassed / 2 + 'px';
-                if ( timePassed > 2000 ) clearInterval(timer);
-            }, 10);
+            animation = requestAnimationFrame(popupGo);
+                start++;
+                popupContent.style.left = start + 'em';
+                if ( start > 70 ) {
+                    start = 0;
+                    cancelAnimationFrame(animation);
+                }
         };
 
         popupBtn.forEach((elem) => {
-            if ( clientWidth > 768 ) {
                 elem.addEventListener('click', () => {
-                    popup.style.display = 'block';
-                    popupGo();
+                    if ( clientWidth > 768 ) {
+                        popup.style.display = 'block';
+                        popupGo();
+                    } else {
+                        popup.style.display = 'block';
+                    }
                 });
-            }
         });
 
         popupClose.addEventListener('click', () => {
             popup.style.display = 'none';
         });
-
-        if ( clientWidth <= 768 ) popup.style.display = 'none';
 
     };
     togglePopUp();
