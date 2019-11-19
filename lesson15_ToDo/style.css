@@ -1,0 +1,28 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 1.8rem;
+    background-color: bisque;
+}
+ol {
+    display: inline-block;
+}
+ol li {
+    float: top;
+    /*text-decoration: line-through;*/
+    text-decoration: none;
+}
+input.form-control {
+    padding: 0;
+    line-height: 30px;
+    background: greenyellow;
+    border-width: 0;
+}
+button {
+    padding: 3px 7px;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: aquamarine;
+}
