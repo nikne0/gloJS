@@ -13,6 +13,8 @@
 +5) Сделать валидацию данных: в поля с номером телефона можно ввести только цифры и знак “+”
 +6) Запретить ввод любых символов в поле "Ваше имя" и "Ваше сообщение", кроме Кириллицы и пробелов!
 +7)  Проверить, чтобы все работало и не было ошибок в консоле
+
+1) Вместо текстового оповещения пользователя (объект message) использовать картинку или анимацию
 * * */
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -432,6 +434,20 @@ window.addEventListener('DOMContentLoaded', function () {
                 loadMessage = "Uploading.......",
                 successMessage = "Thanks! We will contact you!";
 
+            let progressMesssage = (animate) => {
+                animate({
+                    duration: 1000,
+                    timing: function(timeFraction) {
+                        return timeFraction;
+                    },
+                    draw: function(progress) {
+                        progress.style.width = progress * 100 + '%';
+
+                    }
+                });
+
+            };
+
             // Получение переменные для форм
             const form = document.getElementById('form1');
             const form2 = document.getElementById('form2');
@@ -446,6 +462,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 item.addEventListener("submit", (event) => {
                     event.preventDefault();  // отмена дефолтного поведения (автоматической перезагрузки страницы)
                     item.appendChild(statusMessage);  // добавления элемента для вывода сообщения на страницу
+                    item.appendChild(progress);  // добавления элемента для вывода сообщения на страницу
 
                     // создание обьекта FormData для считывания всего что содержится в форме имеет атрибуе name
                     // и сохранения в переменную
@@ -467,10 +484,12 @@ window.addEventListener('DOMContentLoaded', function () {
                     postData(body,
                         () => {
                             statusMessage.textContent = successMessage;
+                            progressMesssage = successMessage;
                             item.reset();  // очистка форм после отправки
                         },
                         (error) => {
                             statusMessage.textContent = errorMessage;
+
                             console.error(request.status); // отправка ошибки со статусом в консоль
                         }
                     );
@@ -481,7 +500,8 @@ window.addEventListener('DOMContentLoaded', function () {
             // Создание элемента для добавления на страницу + стили
             const statusMessage = document.createElement('div');
             statusMessage.style.cssText = 'font-size: 2rem; color: red';
-
+            let progress = document.createElement('progress');
+            // progress.style.cssText = 'wight: 15%';
 
 
             const postData = (body, outputData, errorData) => {
